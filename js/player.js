@@ -52,6 +52,17 @@ Crafty.c("Player", {
                     x:from.x
                 });
             }
+<<<<<<< HEAD
+=======
+          
+        })
+        .bind("KeyDown", function(e) {
+            if(e.keyCode === Crafty.keys.W && this.location === LOCATION.TOP){
+                console.log("top shoot");
+            } else if (e.keyCode === Crafty.keys.UP_ARROW && this.location === LOCATION.BOTTOM) {
+            	console.log("bottom shoot");
+            }
+>>>>>>> 35fd6e972984ddf0eca2c84bdcea8e762e233897
         });
         if (this.location === LOCATION.BOTTOM)
         	this.MOVEMENT_SPEED = -this.MOVEMENT_SPEED;
