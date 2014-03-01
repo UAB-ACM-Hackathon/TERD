@@ -35,6 +35,15 @@ Crafty.c("Player", {
 		.multiway(this.movementSpeed, 
 			createMultiway(this.location))
 		.attr(createAttr(this.location))
-		.color("red");
+		.color("red")
+		.bind('Moved', function(from) {
+            if(this.x+this.w > Crafty.viewport.width ||
+                this.x+this.w < this.w){
+                this.attr({
+                    x:from.x
+                });
+            }
+          
+        });
 	}
 });
