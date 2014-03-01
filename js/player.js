@@ -3,6 +3,8 @@ var LOCATION = {
 	BOTTOM: 1
 };
 
+var MOVEMENT_SPEED = 8;
+
 function createMultiway(location) {
 	if (location === LOCATION.TOP) {
 		return { A: 180, D: 0 };
@@ -20,13 +22,20 @@ function createAttr(location) {
 }
 
 Crafty.c("Player", {
-	movementSpeed: 8,
+	movementSpeed: MOVEMENT_SPEED,
 	lives: 1,
 	score: 0,
 	fireRate: 4,
 	location: LOCATION.BOTTOM,
 	init: function() {
 		
+	},
+
+	shoot: function() {
+		var bullet = Crafty.e("Weapon");
+		bullet.attr({
+			y: this.y - this.h / 2 + bullet.h / 2
+		});
 	},
 
 	player: function(location) {
@@ -37,13 +46,14 @@ Crafty.c("Player", {
 		.attr(createAttr(this.location))
 		.color("red")
 		.bind('Moved', function(from) {
-            if(this.x+this.w > Crafty.viewport.width ||
-                this.x+this.w < this.w){
+            if(this.x + this.w > Crafty.viewport.width ||
+                this.x + this.w < this.w){
                 this.attr({
                     x:from.x
                 });
             }
-          
         });
+        if (this.location === LOCATION.BOTTOM)
+        	this.MOVEMENT_SPEED = -this.MOVEMENT_SPEED;
 	}
 });
