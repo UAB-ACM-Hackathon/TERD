@@ -28,6 +28,10 @@ Crafty.c("Bullet", {
 			this.destroy();
 			ent[0].obj.destroy();
 		})
+		.onHit("Bullet", function(ent) {
+			this.destroy();
+			ent[0].obj.destroy();
+		})
 		.color("green")
 		.attr({
 			w: 10,

@@ -1,9 +1,5 @@
 Crafty.c("Enemy", {
 
-	direction : 1,
-	orig_x : 1,
-	orig_y : 1,
-
 	init: function() {
 
 	},
@@ -14,13 +10,18 @@ Crafty.c("Enemy", {
 			this.direction = -direction;
 		}*/
 
-		orig_x = x_coord;
-		orig_y = y_coord;
+		var orig_x = x_coord;
+		var orig_y = y_coord;
+		var direction = 1;
 
 		this.requires("Color, 2D, DOM, Collision")
 		.bind("EnterFrame", function() {
 
-			this.x-=speed
+			if (this.x < (orig_x - 50) || this.x > (orig_x + 50)) {
+				direction *= -1;
+			}
+			this.x-=speed*direction;
+			
 		})
 		.color("blue")
 		.attr({
