@@ -3,8 +3,6 @@ var LOCATION = {
 	BOTTOM: 1
 };
 
-var MOVEMENT_SPEED = 8;
-
 function createMultiway(location) {
 	if (location === LOCATION.TOP) {
 		return { A: 180, D: 0 };
@@ -22,7 +20,7 @@ function createAttr(location) {
 }
 
 Crafty.c("Player", {
-	movementSpeed: MOVEMENT_SPEED,
+	movementSpeed: 8,
 	lives: 1,
 	score: 0,
 	fireRate: 4,
@@ -32,16 +30,15 @@ Crafty.c("Player", {
 	},
 
 	shoot: function() {
-		var bullet = Crafty.e("Weapon");
-		bullet.attr({
-			y: this.y - this.h / 2 + bullet.h / 2
-		});
+		var bullet = Crafty.e("Bullet").bullet(this.location, this.x, this.y, this.w, this.h);
+		
 	},
 
 	player: function(location) {
 		this.location = location;
+
 		this.requires("2D, DOM, Color, Multiway, Keyboard, Collision")
-		.multiway(this.movementSpeed, 
+		.multiway(8, 
 			createMultiway(this.location))
 		.attr(createAttr(this.location))
 		.color("red")
@@ -52,19 +49,15 @@ Crafty.c("Player", {
                     x:from.x
                 });
             }
-<<<<<<< HEAD
-=======
-          
         })
         .bind("KeyDown", function(e) {
             if(e.keyCode === Crafty.keys.W && this.location === LOCATION.TOP){
                 console.log("top shoot");
+                this.shoot();
             } else if (e.keyCode === Crafty.keys.UP_ARROW && this.location === LOCATION.BOTTOM) {
             	console.log("bottom shoot");
+            	this.shoot();
             }
->>>>>>> 35fd6e972984ddf0eca2c84bdcea8e762e233897
         });
-        if (this.location === LOCATION.BOTTOM)
-        	this.MOVEMENT_SPEED = -this.MOVEMENT_SPEED;
 	}
 });
