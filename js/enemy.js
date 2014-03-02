@@ -41,6 +41,11 @@ Crafty.c("Enemy", {
 		})
 		.onHit("Player", function(ent) {
 			this.destroy();
+			if (ent[0].obj.location === LOCATION.TOP) {
+                                window.location = "bottom_winner" + ".html";
+                        } else {
+                                window.location = "top_winner" + ".html";
+                        }
 			ent[0].obj.destroy();
 		})
 		//.color("blue")
