@@ -13,3 +13,7 @@ Crafty.sprite("images/enemy_top.png",{
 Crafty.sprite("images/enemy_bottom.png",{
     badship_bottom:[0,0,100,88]
 });
+
+Crafty.sprite("images/bullet.png",{
+    shot:[0,0,5,13]
+});
