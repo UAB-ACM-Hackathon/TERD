@@ -29,6 +29,15 @@ Crafty.c("Bullet", {
 		})
 		.onHit("Player", function(ent) {
 			this.destroy();
+			Crafty.defineScene("win", function() {
+			Crafty.background("url('images/background.gif')");
+			Crafty.e("2D, DOM, Text")
+			  .attr({ w: 100, h: 20, x: 150, y: 120 })
+			  .text("WINNER!\n" + ((ent[0].obj.location === LOCATION.TOP) ? "BOTTOM" : "TOP"))
+			  .css({ "text-align": "center"})
+			  .textColor("#00FF00");
+			});
+			Crafty.scene("win");
 			ent[0].obj.destroy();
 		})
 		.onHit("Enemy", function(ent) {
