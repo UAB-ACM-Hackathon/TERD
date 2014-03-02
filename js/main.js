@@ -28,7 +28,7 @@ Game = {
 		var player_bottom = Crafty.e("Player").player(LOCATION.BOTTOM);
 
 		var enemy_rows = 4;
-		var enemy_colums = 8;
+		var enemy_colums = 6;
 
 		for (var rows = enemy_rows; rows > 0; rows--) {
 

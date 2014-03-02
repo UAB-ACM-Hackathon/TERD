@@ -28,8 +28,9 @@ Crafty.c("Enemy", {
 		this.requires("2D, DOM,"+ this.badship +", Color, Collision")
 		.bind("EnterFrame", function() {
 
-			if (this.x < (orig_x - 50) || this.x > (orig_x + 50)) {
+			if (this.x < (orig_x - 150) || this.x > (orig_x + 150)) {
 				direction *= -1;
+				this.y += (location === LOCATION.BOTTOM) ? -2 : 2;
 			}
 			this.x-=speed*direction;
 
