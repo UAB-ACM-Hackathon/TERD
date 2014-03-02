@@ -50,10 +50,14 @@ matchmaker.sockets.on('connection', function (socket) {
 function hostMatch(p1, p2, port) {
 	var match = require('socket.io').listen(port);
 	var connect_count = 0;
-
+	var p1;
+	var p2;
 	match.sockets.on('connection', function (socket) {
-		connect_count += 1;
-		if (connect_count >= 2) {
+		if (p1 == undefined) {
+			p1 = socket;
+		} else {
+			p2 = socket;
+
 			match.sockets.emit("START");
 		}
 	}
