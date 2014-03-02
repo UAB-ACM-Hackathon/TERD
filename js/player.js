@@ -19,6 +19,10 @@ function createAttr(location) {
 	}
 }
 
+Crafty.load(['sounds/laser1.ogg']);
+Crafty.audio.add({
+	laser: ['sounds/laser1.ogg']});
+
 Crafty.c("Player", {
 	movementSpeed: 8,
 	lives: 1,
@@ -31,6 +35,7 @@ Crafty.c("Player", {
 	},
 
 	shoot: function() {
+		Crafty.audio.play('laser');
 		Crafty.e("Bullet").bullet(this.location, this.x, this.y, this.w, this.h, SHOOTER.PLAYER);
 	},
 
