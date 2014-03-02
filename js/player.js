@@ -21,7 +21,8 @@ function createAttr(location) {
 
 Crafty.load(['sounds/laser1.ogg']);
 Crafty.audio.add({
-	laser: ['sounds/laser1.ogg']});
+	laser: ['sounds/laser1.ogg']
+});
 
 Crafty.c("Player", {
 	movementSpeed: 8,
