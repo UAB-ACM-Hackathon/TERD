@@ -38,6 +38,10 @@ Crafty.c("Enemy", {
 			}
 			
 		})
+		.onHit("Player", function(ent) {
+			this.destroy();
+			ent[0].obj.destroy();
+		})
 		//.color("blue")
 		.attr({
 			w: 50,
