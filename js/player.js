@@ -30,8 +30,7 @@ Crafty.c("Player", {
 	},
 
 	shoot: function() {
-		var bullet = Crafty.e("Bullet").bullet(this.location, this.x, this.y, this.w, this.h);
-		
+		Crafty.e("Bullet").bullet(this.location, this.x, this.y, this.w, this.h, SHOOTER.PLAYER);
 	},
 
 	player: function(location) {
@@ -52,10 +51,8 @@ Crafty.c("Player", {
         })
         .bind("KeyDown", function(e) {
             if(e.keyCode === Crafty.keys.W && this.location === LOCATION.TOP){
-                console.log("top shoot");
                 this.shoot();
             } else if (e.keyCode === Crafty.keys.UP_ARROW && this.location === LOCATION.BOTTOM) {
-            	console.log("bottom shoot");
             	this.shoot();
             }
         });

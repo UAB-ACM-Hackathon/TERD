@@ -1,18 +1,23 @@
 Crafty.c("Enemy", {
 
+	location : 0,
+
 	init: function() {
 
 	},
 
 	enemy: function(x_coord, y_coord, location, speed) {
 
-		/*if (location === LOCATION.BOTTOM) {
-			this.direction = -direction;
-		}*/
+		this.location = location;
+
+		var direction = 1;
+
+		if (location === LOCATION.TOP) {
+			direction = -direction;
+		} 
 
 		var orig_x = x_coord;
 		var orig_y = y_coord;
-		var direction = 1;
 
 		this.requires("Color, 2D, DOM, Collision")
 		.bind("EnterFrame", function() {
@@ -21,6 +26,10 @@ Crafty.c("Enemy", {
 				direction *= -1;
 			}
 			this.x-=speed*direction;
+
+			if (Math.floor((Math.random()*5000)+1) > 4999) {
+				this.shoot();
+			}
 			
 		})
 		.color("blue")
@@ -30,5 +39,9 @@ Crafty.c("Enemy", {
 			x: x_coord,
 			y: y_coord
 		});
+	},
+
+	shoot: function() {
+		Crafty.e("Bullet").bullet(this.location===0?1:0, this.x, this.y, this.w, this.h, SHOOTER.ENEMY);
 	}
 });

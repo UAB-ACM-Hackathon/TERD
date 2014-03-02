@@ -1,11 +1,16 @@
 var BULLET_MOVEMENT_SPEED = -8;
 
+var SHOOTER = {
+	ENEMY: 0,
+	PLAYER: 1
+};
+
 Crafty.c("Bullet", {
 	init: function() {
 
 	},
 
-	bullet: function(location, ship_x, ship_y, ship_w, ship_h) {
+	bullet: function(location, ship_x, ship_y, ship_w, ship_h, shooter) {
 		if (location === LOCATION.BOTTOM) {
 			this.bullet_movement_speed = BULLET_MOVEMENT_SPEED;
 		} else {
@@ -17,7 +22,6 @@ Crafty.c("Bullet", {
 			this.y += this.bullet_movement_speed;
 			if (this.y > window.innerHeight || this.y < 0) {
 				this.destroy();
-				console.log("des");
 			}
 		})
 		.onHit("Player", function(ent) {
@@ -25,8 +29,10 @@ Crafty.c("Bullet", {
 			ent[0].obj.destroy();
 		})
 		.onHit("Enemy", function(ent) {
-			this.destroy();
-			ent[0].obj.destroy();
+			if (shooter !== SHOOTER.ENEMY) {
+				this.destroy();
+				ent[0].obj.destroy();
+			}
 		})
 		.onHit("Bullet", function(ent) {
 			this.destroy();
