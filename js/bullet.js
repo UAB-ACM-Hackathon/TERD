@@ -32,8 +32,9 @@ Crafty.c("Bullet", {
 			Crafty.defineScene("win", function() {
 			Crafty.background("url('images/background.gif')");
 			Crafty.e("2D, DOM, Text")
-			  .attr({ w: 100, h: 20, x: 150, y: 120 })
+			  .attr({ w: 100, h: 20, x: window.innerWidth/2-50, y: window.innerHeight/2-10 })
 			  .text("WINNER!\n" + ((ent[0].obj.location === LOCATION.TOP) ? "BOTTOM" : "TOP"))
+			  .textFont({ size: '50px', weight: 'bold' })
 			  .css({ "text-align": "center"})
 			  .textColor("#00FF00");
 			});
