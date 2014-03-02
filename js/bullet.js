@@ -29,16 +29,11 @@ Crafty.c("Bullet", {
 		})
 		.onHit("Player", function(ent) {
 			this.destroy();
-			Crafty.defineScene("win", function() {
-			Crafty.background("url('images/background.gif')");
-			Crafty.e("2D, DOM, Text")
-			  .attr({ w: 100, h: 20, x: window.innerWidth/2-50, y: window.innerHeight/2-10 })
-			  .text("WINNER!\n" + ((ent[0].obj.location === LOCATION.TOP) ? "BOTTOM" : "TOP"))
-			  .textFont({ size: '50px', weight: 'bold' })
-			  .css({ "text-align": "center"})
-			  .textColor("#00FF00");
-			});
-			Crafty.scene("win");
+			if (ent[0].obj.location === LOCATION.TOP) {
+				window.location = "bottom_winner" + ".html";
+			} else {
+				window.location = "top_winner" + ".html";
+			}
 			ent[0].obj.destroy();
 		})
 		.onHit("Enemy", function(ent) {
