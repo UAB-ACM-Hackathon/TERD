@@ -1,5 +1,4 @@
 TERD
 ====
 
-Erby works!
-Braden works?
+download and open index.html in firefox
