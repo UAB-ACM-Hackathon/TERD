@@ -1,5 +1,7 @@
 Crafty.c("Enemy", {
 
+	badship:"badship_top",
+
 	location : 0,
 
 	init: function() {
@@ -10,6 +12,10 @@ Crafty.c("Enemy", {
 
 		this.location = location;
 
+		if (this.location === LOCATION.TOP) {
+			this.badship = "badship_bottom";
+		}
+
 		var direction = 1;
 
 		if (location === LOCATION.TOP) {
@@ -19,7 +25,7 @@ Crafty.c("Enemy", {
 		var orig_x = x_coord;
 		var orig_y = y_coord;
 
-		this.requires("Color, 2D, DOM, Collision")
+		this.requires("2D, DOM,"+ this.badship +", Color, Collision")
 		.bind("EnterFrame", function() {
 
 			if (this.x < (orig_x - 50) || this.x > (orig_x + 50)) {
@@ -32,10 +38,10 @@ Crafty.c("Enemy", {
 			}
 			
 		})
-		.color("blue")
+		//.color("blue")
 		.attr({
-			w: 40,
-			h: 15,
+			w: 50,
+			h: 50,
 			x: x_coord,
 			y: y_coord
 		});

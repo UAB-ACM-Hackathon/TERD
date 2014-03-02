@@ -12,6 +12,7 @@ Crafty.c("Bullet", {
 
 	bullet: function(location, ship_x, ship_y, ship_w, ship_h, shooter) {
 		if (location === LOCATION.BOTTOM) {
+			ship_y += 40;
 			this.bullet_movement_speed = BULLET_MOVEMENT_SPEED;
 		} else {
 			this.bullet_movement_speed = -BULLET_MOVEMENT_SPEED;
