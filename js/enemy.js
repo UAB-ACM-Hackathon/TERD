@@ -30,7 +30,7 @@ Crafty.c("Enemy", {
 
 			if (this.x < (orig_x - 150) || this.x > (orig_x + 150)) {
 				direction *= -1;
-				this.y += (location === LOCATION.BOTTOM) ? -2 : 2;
+				this.y += (location === LOCATION.BOTTOM) ? -10 : 10;
 			}
 			this.x-=speed*direction;
 
