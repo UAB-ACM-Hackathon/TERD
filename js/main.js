@@ -24,10 +24,14 @@ Game = {
 		Crafty.init(window.innerWidth, window.innerHeight);
 		Crafty.background("url('images/background.gif')");
 
-		Crafty.load(['sounds/laser1.ogg']);
+		Crafty.load(['sounds/laser1.ogg',
+			     'sounds/menu-song.mp3']);
 		Crafty.audio.add({
+			menu: ['sounds/menu-song.mp3'],
         		laser: ['sounds/laser1.ogg']
 		});
+
+		Crafty.audio.play("menu");
 
 
 		var player_top = Crafty.e("Player").player(LOCATION.TOP);
